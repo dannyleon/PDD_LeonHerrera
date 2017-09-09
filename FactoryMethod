@@ -1,3 +1,21 @@
+//Leon Herrera Daniel Ernesto
+
+El Patron Creacional Factory Method
+
+Este patron:
+
+Defina una interfaz para crear un objeto, 
+pero deja que las subclases decidan qué clase instanciar. 
+Factory Method permite a una clase aplazar la instanciación a subclases.
+
+
+En este ejemplo se muestra como apartir de la Interfaz animal se pueden generar Animales de cualquier tipo y la subclase
+FactoryPatternTest es la que decide que objeto instanciar dependiendo de lo que el cliente requiera.
+
+
+
+
+
 public interface Animal
 {
 	publc  void eat();
