@@ -56,6 +56,8 @@ public class AnimalFactory
 
 public class FactoryPatternTest
 {
+	public static void main(String[] args)
+	{		  
 	//Before Factory Pattern
         /**Dog dog= new Dog();
         dog.eat();
@@ -71,6 +73,8 @@ public class FactoryPatternTest
         AnimalFactory animalfactory = new AnimalFactory();
         Animal animal = animalfactory.createAnimal(animalType);
         animal.eat();
+		
+	}
 }
 
 
