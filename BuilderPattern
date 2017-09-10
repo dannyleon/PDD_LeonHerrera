@@ -1,0 +1,117 @@
+//LEON HERRERA DANIEL ERNESTO
+//PATRON BUILDER 
+//Patrones creacionales
+/*
+El patron de diseño creacional builder abstrae el proceso de creacion de los objetos completos, centralizandolo en un punto.
+
+Como patron, el patron builder(constructor) es usado para permitir la creacion de una variedad de objetos
+complejos desde un objeto fuente, el objeto fuente se compone de una variedad de partes que contribuyen individualmente
+a la creacion de cada objeto.
+*/
+
+//
+//PATRON EN JAVA
+//En este ejemplo podemos ver como se pueden crear diferentes tipos de pizzas
+//como en el patron builder se requiere, que sea picante, hawaiana etc.
+//todos los objetos pizza creados se crean apartir de la clase pizza que
+//crea a los objetos de pizza de diferentes ingredientes
+
+/* "Producto" */
+class Pizza {
+    private String dough = "";
+    private String sauce = "";
+    private String topping = "";
+
+    public void setDough(String dough) {
+        this.dough = dough;
+    }
+
+    public void setSauce(String sauce) {
+        this.sauce = sauce;
+    }
+
+    public void setTopping(String topping) {
+        this.topping = topping;
+    }
+}
+
+/* "Abstracto Builder" */
+abstract class PizzaBuilder {
+    protected Pizza pizza;
+
+    public Pizza getPizza() {
+        return pizza;
+    }
+
+    public void createNewPizzaProduct() {
+        pizza = new Pizza();
+    }
+
+    public abstract void buildDough();
+    public abstract void buildSauce();
+    public abstract void buildTopping();
+}
+
+/* "ConcreteBuilder" */
+class HawaiianPizzaBuilder extends PizzaBuilder {
+    public void buildDough() {
+        pizza.setDough("cross");
+    }
+
+    public void buildSauce() {
+        pizza.setSauce("mild");
+    }
+
+    public void buildTopping() {
+        pizza.setTopping("ham+pineapple");
+    }
+}
+
+/* "ConcreteBuilder" */
+class SpicyPizzaBuilder extends PizzaBuilder {
+    public void buildDough() {
+        pizza.setDough("pan baked");
+    }
+
+    public void buildSauce() {
+        pizza.setSauce("hot");
+    }
+
+    public void buildTopping() {
+        pizza.setTopping("pepperoni+salami");
+    }
+}
+
+/* "Director" */
+class Waiter {
+    private PizzaBuilder pizzaBuilder;
+
+    public void setPizzaBuilder(PizzaBuilder pb) {
+        pizzaBuilder = pb;
+    }
+
+    public Pizza getPizza() {
+        return pizzaBuilder.getPizza();
+    }
+
+    public void constructPizza() {
+        pizzaBuilder.createNewPizzaProduct();
+        pizzaBuilder.buildDough();
+        pizzaBuilder.buildSauce();
+        pizzaBuilder.buildTopping();
+    }
+}
+
+/* A customer ordering a pizza. */
+public class PizzaBuilderDemo {
+    public static void main(String[] args) {
+        Waiter waiter = new Waiter();
+        PizzaBuilder hawaiianPizzabuilder = new HawaiianPizzaBuilder();
+        PizzaBuilder spicyPizzaBuilder = new SpicyPizzaBuilder();
+
+        waiter.setPizzaBuilder( hawaiianPizzabuilder );
+        waiter.constructPizza();
+
+        Pizza pizza = waiter.getPizza();
+    }
+}
