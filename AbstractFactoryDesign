@@ -1,3 +1,5 @@
+//LEON HERRERA DANIEL ERNESTO 
+//13211493
 El patrón de diseño Fábrica Abstracta se utiliza para proporcionar una interfaz común para crear una serie de objetos (productos) 
 bajo una u otra arquitectura o framework, sin que los clientes de dichos productos tengan que tener conocimiento de la arquitectura
 elegida para implemetar cada familia de productos.
