@@ -1,0 +1,56 @@
+//LEON HERRERA DANIEL ERNESTO
+//Practica patrones creacionales
+
+
+*/
+Patrones creacionales procuran independizar al sistema de como sus objetos son creados y/o representados
+En este ejercicio usare el patron singleton :
+
+Singleton: garantiza que solo exista una instancia de un objeto y que la forma de acceder a dicha instancia
+sea de manera general.
+
+En estos ejercicios se utlizara java
+*/
+
+//SINGLETON 
+//En este codigo se implementa una clase Logger osea que no puede haber mas de un usuario en
+//una misma cuenta y por ello no te deja hacer mas instancias, por lo tanto si quieres crear mas no te deja 
+public class Main{
+	
+	public static void main(String[]args){
+		
+		Logger logger=Logger.getInstance();
+		logger.log("Usuario 1");
+	}
+	
+}
+
+public class Logger{
+	
+	private static Logger log;
+	
+	private Logger(){
+		
+		
+	}
+  
+
+	public static Logger getInstance(){
+		if(log==null){
+			log=new Logger();
+			
+		}
+		
+		return log;
+	}
+	
+	public void log(String msg){
+		
+		System.out.Println(msg);
+	}
+	
+}
+
+  //*****************************************************************
+   //*****************************************************************
+    
